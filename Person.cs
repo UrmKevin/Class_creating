@@ -20,10 +20,11 @@ namespace Class_creating
         {
             surname = Surname;
         }
-        public Person(string Name, string Surname)
+        public Person(string Name, string Surname, string Gender)
         {
             name = Name;
             surname = Surname;
+            gender = Gender;
         }
         public string Surname
         {
