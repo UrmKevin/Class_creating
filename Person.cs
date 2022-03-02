@@ -8,29 +8,39 @@ namespace Class_creating
 {
     class Person
     {
-        private string ans;
+        private string ans; // Поля класса
         string surname;
         string name;
         string gender;
         string status;
         int age;
         int salary;
-        public Person() { }
+        Language language;
+        public Person() { } // Конструктор
+        public Person(string Surname,Language language)
+        {
+            surname = Surname;
+            this.language = language;
+        }   // Методы
         public Person(string Surname)
         {
             surname = Surname;
         }
-        public Person(string Name, string Surname, string Gender)
+        public Person(string Name, string Surname, int Age)
         {
             name = Name;
             surname = Surname;
-            gender = Gender;
+            age = Age;
+        }
+        public Language Language
+        {
+            get { return language; }
         }
         public string Surname
         {
             set { if (surname == null) surname = value; }
             get { return surname; }
-        }
+        }   // Свойства
         public string Name
         {
             set { if (name == null) name = value; }
@@ -84,12 +94,47 @@ namespace Class_creating
         }
         public void Greetings()
         {
-            Console.WriteLine("Hello! My name is {0} and last name is {1}", name, surname);
-            Console.WriteLine("I'm a {0} years old {1}, and I'm a {2}", gender, age, status);
+            if(name!=null && surname != null)
+            {
+                Console.WriteLine("Hello! My name is {0} and last name is {1}", name, surname);
+            }
+            else if (surname==null && name!=null)
+            {
+                Console.WriteLine("Hello! My name is {0}", name);
+            }
+            else if (name==null && surname!=null)
+            {
+                Console.WriteLine("Hello! My last name is {0}", surname);
+            }
+            else
+            {
+                Console.WriteLine("Hello!");
+            }
+
+            if (gender != null && age > 0)
+            {
+                Console.WriteLine("I'm a {0} {1} years old, and I'm a {2}", gender, age, status);
+            }
+            else if (age < 0 && gender != null)
+            {
+                Console.WriteLine("I'm a {0}", gender);
+            }
+            else if (gender == null && age > 0)
+            {
+                Console.WriteLine("I'm {0} years old and I'm a {1}", age, status);
+            }
+            else
+            {
+                Console.WriteLine("Secret");
+            }
         }
-        public void sth()
+        public double SocialTaxes()
         {
-            Console.WriteLine();
+            double stax = 0;
+            stax = salary * 0.33;
+            stax = salary - stax;
+            Console.WriteLine("My total salary is {0}",stax);
+            return stax;
         }
     }
 }
