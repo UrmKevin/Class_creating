@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Class_creating
 {
-    class Person
+    abstract class Person
     {
         private string ans; // Поля класса
         string surname;
@@ -16,11 +16,12 @@ namespace Class_creating
         int age;
         int salary;
         Language language;
+
         public Person() { } // Конструктор
-        public Person(string Surname,Language language)
+        public Person(string Surname, string Name)
         {
             surname = Surname;
-            this.language = language;
+            name = Name;
         }   // Методы
         public Person(string Surname)
         {
@@ -61,7 +62,7 @@ namespace Class_creating
                 {
                     status = "kid";
                 }
-                else if (age<17)
+                else if (age < 17)
                 {
                     status = "teenager";
                 }
@@ -94,15 +95,15 @@ namespace Class_creating
         }
         public void Greetings()
         {
-            if(name!=null && surname != null)
+            if (name != null && surname != null)
             {
                 Console.WriteLine("Hello! My name is {0} and last name is {1}", name, surname);
             }
-            else if (surname==null && name!=null)
+            else if (surname == null && name != null)
             {
                 Console.WriteLine("Hello! My name is {0}", name);
             }
-            else if (name==null && surname!=null)
+            else if (name == null && surname != null)
             {
                 Console.WriteLine("Hello! My last name is {0}", surname);
             }
@@ -133,8 +134,9 @@ namespace Class_creating
             double stax = 0;
             stax = salary * 0.33;
             stax = salary - stax;
-            Console.WriteLine("My total salary is {0}",stax);
+            Console.WriteLine("My total salary is {0}", stax);
             return stax;
         }
+        public abstract void Kes_ma_olen();
     }
 }
